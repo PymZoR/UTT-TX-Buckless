@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage[sc]{mathpazo}
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape}
+\linespread{1.05}
+
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage[margin=20mm,top=32mm]{geometry}
+\usepackage{multicol}
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\usepackage{lettrine}
+\usepackage{paralist}
+\usepackage[titletoc,toc,title]{appendix}
+\usepackage{graphicx}
+\usepackage{alltt}
+
+
+\usepackage{titlesec}
+\renewcommand\thesection{\Roman{section}}
+\renewcommand\thesubsection{\Roman{subsection}}
+\titleformat{\section}[block]{\LARGE\scshape\centering}{\thesection.}{1em}{}
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{}
+
+\usepackage{fancyhdr}
+\usepackage{minted}
+\definecolor{LightGray}{gray}{0.9}
+\usemintedstyle{monokai}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[C]{Documentation et modélisation pour les architectures orientée service}
+\fancyfoot[RO,LE]{\thepage}
+
+\title{\vspace{-15mm}\fontsize{24pt}{10pt}\selectfont\textbf{Documentation et modélisation pour les architectures orientée service}}
+
+\author{
+    \large
+    \textsc{Axel Mousset}\\[2mm]
+    \normalsize Université de Technologie de Troyes \\
+    \vspace{-5mm}
+}
+\date{Printemps 2016}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+    \maketitle
+
+    \begin{abstract}
+        \input{sections/abstract.tex}
+    \end{abstract}
+
+    \newpage
+    \tableofcontents
+
+    \thispagestyle{fancy}
+
+    \newpage
+    \section{Etat de l'art}
+        \input{sections/stateOfArt.tex}
+
+    \newpage
+    \section{Cas d'études open-source}
+        \input{sections/comparisons.tex}
+
+    \newpage
+    \section{Application au projet Buckless}
+        \input{sections/buckless.tex}
+
+    \newpage
+    \section{Conclusion}
+        \input{sections/conclusion.tex}
+
+    \newpage
+    \appendix
+    \input{sections/annexes.tex}
+
+    \newpage
+        \begin{thebibliography}{1}
+            \input{misc/bibliography.tex}
+        \end{thebibliography}
+\end{document}
