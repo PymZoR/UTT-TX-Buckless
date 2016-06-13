@@ -258,11 +258,19 @@ eslint .
             \end{figure}
 
     \subsubsection{Intégration continue}
-        L'intégration continu désigne [] .
-        Il ne faut pas la confondre avec le déploiement continu qui lui consiste en [].
-        A l'instar des git hooks, le code peut lui être propagé. Il n'est vérifié qu'à et permet de rendre
-        compte de "l'état de santé" du code / de la documentation.
-        - Liste des outils (circleCI, travisCI, gitLab..)
-        - Exemple de build réussi / fail
-        plusieurs services comme travis ou circle-CI permettent de rendre compte de l'état du projet.
-        Ce n'est alors qu'un indicateur de la santé du code et de sa documentation, et non une obligation
+        L'intégration continue désigne un ensemble de pratiques utilisées en génie logiciel consistant
+        à vérifier à chaque modification de code source que le résultat des modifications ne produit
+        pas de régression dans l'application développée. Il assure la bonne compilation du code,
+        mais aussi le jeu des tests unitaires, le packaging, le déploiement et l’exécution des tests
+        dans un environnement d’intégration. Intégrer le lint au coeur de ce processus permet
+        de déclarer le code «non saint», et ainsi pousser le développement à se faire en même
+        temps que celui de sa documentation. Parmis les outils d'intégration continue les plus
+        populaires, on pourra citer : Travis CI, Circle CI, Jenkins, Gitlab CI. L'écosystème est cependant
+        en pleine évolution, et il existe des dizaines d'alternatives.
+
+    \subsubsection{Déploiement continu}
+        On appelle déploiement ocntinu le fait d'automatiser les mécanismes de déploiement du code en
+        production à la suite de l'intégration continue. Un cas d'utilisation immédiat pour la documentation
+        est alors la mise en ligne automatique des documentations générées par Doxx ou Swagger après
+        chaque nouvelle version du code. Cette pratique est d'autant plus facile d'accès maintenant que
+        GitHub propose d'héberger des sites statiques gratuitement pour les projets open-source. 
