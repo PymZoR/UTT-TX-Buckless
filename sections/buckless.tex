@@ -1,8 +1,84 @@
 \subsection{Présentation du projet}
     \subsubsection{Contexte}
-        \lipsum[1]
+        \paragraph{}
+            L’idée a vu le jour au sein de notre campus, en se basant sur des situations qui nous posaient problème.
+            Vendre des produits ou des services peut être quelque chose de complexe si l’on considère le temps
+            qu’il faut à un client pour accéder à un vendeur. De plus, ces derniers sont le plus souvent des étudiants
+            volontaires qui n’ont pas l’expérience qu’un professionnel pourrait avoir, spécialement lors d’un rush.
+            C’est pour cela que nous avons décidé de développer une solution de paiement entièrement dématérialisée
+            pour optimiser les flux monétaires et logistiques lors des événements de notre école.
+
+        \paragraph{}
+            Buckless se démarque de certains projets similaires par le fait qu’il ne compte pas devenir un système
+            de paiement global, intermédiaire de la banque. L’idée est de créer des monnaies locales, indépendantes
+            entre chaque structure. Les clients gardent ainsi la main mise sur leur trésorerie et leur infrastructure
+            informatique.
+            La solution se présente sous la forme de bornes physiques (téléphones, tablettes, ordinateurs tactiles),
+            utilisées par des vendeurs. Le client, lui, peut recharger un compte virtuel via une application en ligne,
+            où via des points de rechargement physique directement sur site. Son moyen de paiement est défini par l'entreprise :
+            un bracelet, un tatouage — pratique dans le monde événementiel — ou une carte — monde étudiant, ou encore
+            son smartphone. Ce moyen de paiement permet d'identifier le client et de réaliser des achats instantanément.
 
     \subsubsection{Technologies utilisées}
         \lipsum[1]
 
-    \subsubsection{Stratégie de documentation}
+\newpage
+\subsection{Stratégie de documentation}
+    \subsubsection{UML - Diagrammes de composants}
+        \paragraph{}
+            Parmi la spécification d'UML, un type de diagramme sous-utilisé, le diagramme de composants,
+            se révèle être un bon moyen de décrire les architectures utilisant des services.\\
+            En effet, un service peut être vu comme un composant d'un système global, et les interfaces
+            de ce composant comme les ressources exposées par le service.
+
+        \paragraph{}
+            L'approche "composant" au niveau logiciel est intéressante, car elle permet de rendre compte
+            de l'architecture logicielle à une échelle plus grande que celle du diagramme de classe.
+            Il est ainsi possible de modéliser les intéractions entre des grandes parties du logiciel,
+            parties découpées de manière "fonctionnelle", et ce malgré d'éventuels changements au niveau
+            du code.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.6]{./assets/UML/component1.png}
+            \caption{Représentation avec des objets d'une API et ses ressources}
+        \end{figure}
+
+        \paragraph{}
+            Un premier éssai de modélisation est donné ci-dessus. La première caractéristique d'une telle
+            modélisation est l'impossibilité de voir où les ressources sont sollicitées au sein ̂meme
+            du composant. De plus, à mesure que le nombre de ressource augmente,  l'encombrement visuel
+            du à la représentation des instances passées rend la représentation difficile.
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.6]{./assets/UML/component3.png}
+            \caption{Représentation d'une API et de ses ressources avec des interfaces}
+        \end{figure}
+
+        \paragraph{}
+            La représentation de l'intéraction avec les sous composants est rendue possible par l'utilisation
+            d'interfaces. De plus, pour éviter des diagrammes trop verbeux, on proposera la \textbf{convention}
+            suivante pour les diagrammes de composants orientés service : \textbf{Une interface
+            est homonyme au ressource qu'elle expose}.
+
+        \newpage
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.6]{./assets/UML/component2.png}
+            \caption{Représentation d'une API et de ses ressources avec des interfaces homonymes aux instances}
+        \end{figure}
+
+        \paragraph{}
+            Cette utilisation des interfaces renvoie directement à la définition (cf \ref{swaggerdef})
+            du formalisme de description d'API Swagger. On remarque alors que le diagramme de composant pour
+            les architectures orientées services, est aux formalismes de type Swagger ce que les diagrammes
+            de classes sont aux commentaires de type Javadoc : une représentation visuelle alternative.
+
+
+        \paragraph{}
+            Il est intéressant de constater qu'il devient aisé d'avoir une vue globale de l'état
+            d'utilisation des services (et donc des ressources) par les différentes parties de ou des
+            logiciels. Un bénéfice immédiat de cette modélisation est donc de pouvoir anticiper l'impact
+            qu'aurait la modification du fonctionnement d'un service, ou de la modification des modèles
+            qui lui sont associés.
