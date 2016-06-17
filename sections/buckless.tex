@@ -20,7 +20,17 @@
             son smartphone. Ce moyen de paiement permet d'identifier le client et de réaliser des achats instantanément.
 
     \subsubsection{Technologies utilisées}
-        \lipsum[1]
+        Le client de vente présent sur les bornes est une application web. En plus de l'avantage d'̂etre
+        multi-plateforme, procéder ainsi permet le déploiement automatique de chaque nouvelle version
+        du client sur les bornes. L'application web est entièrement écrite en javascript/css/html
+        sous la forme d'une \textit{single page application}. Il a été choisi de construire le
+        client à l'aide de \textit{Web Components}, une approche moderne et modulaire de développement.
+        L'idée est de définir des composants indépendants, composés de leurs propres fichiers javascript/css/html,
+        puis de les agencer afin d'obtenir l'application finale. Pour ce faire, le framework Vue.js
+        a été choisi, bien que d'autres puissent faire de même (Angular.js, react, ..).\\
+        Le serveur est développé en javascript sur la plateforme Node.js. Il est composé d'un service
+        RESTful, de services d'authentification, et d'un serveur WebSocket pour la communication en
+        temps réel.
 
 \newpage
 \subsection{Stratégie de documentation}
