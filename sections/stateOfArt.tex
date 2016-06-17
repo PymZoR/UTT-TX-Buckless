@@ -160,14 +160,18 @@ de description d'API REST les plus populaires.
 
     \subsubsection{Git hooks}
         \paragraph{}
+            \label{hooks}
             Git est aujourd'hui l'outil de versionning de code le plus largement utilisé. Parmis ses possibilité,
             celle de définir des hooks\footnote{Action déclenchée automatiquement} lorsqu'une nouvelle version est propagée.
             Ainsi, il est possible d'utiliser le linter de code en avec un hook "pré-commit", c'est à dire avant la
             propagation d'une nouvelle version, pour n'autoriser la propagation qu'une fois que le linter valide l'état du code et
-            de ses commentaires.
-            Cette méthode est néanmoins un peu brutale, car parfois incompatible avec certaines situations.
-            Il est parfois critique de devoir déployer sur la production un bugfix, ce qui peut être gênant lorsque l'ont travaille avec des hooks qui ne sont pas
-            forcémment triviaux à désactiver.
+            de ses commentaires.\\
+            Cette méthode est néanmoins un peu brutale, car parfois incompatible avec certaines méthodes
+            de développement. Il est parfois critique de devoir déployer sur la production un bugfix,
+            ce qui peut être gênant lorsque l'ont travaille avec des hooks qui ne sont pas forcémment triviaux à désactiver.\\
+            Elle n'est cependant pas à oublier : certaines grosses entreprises avec des exigences de
+            qualité de code très strictes utilisent des mécanismes similaires.
+
 
         \paragraph{}
             Pour créer un hook de pré-commit, il faut créer un fichier qui contient des instructions bash,

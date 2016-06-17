@@ -32,8 +32,9 @@
         RESTful, de services d'authentification, et d'un serveur WebSocket pour la communication en
         temps réel.
 
+
 \newpage
-\subsection{Stratégie de documentation}
+\subsection{Documentation du code}
     \subsubsection{UML - Diagrammes de composants}
         \paragraph{}
             Parmi la spécification d'UML, un type de diagramme sous-utilisé, le diagramme de composants,
@@ -67,10 +68,10 @@
         \end{figure}
 
         \paragraph{}
-            La représentation de l'intéraction avec les sous composants est rendue possible par l'utilisation
-            d'interfaces. De plus, pour éviter des diagrammes trop verbeux, on proposera la \textbf{convention}
-            suivante pour les diagrammes de composants orientés service : \textbf{Une interface
-            est homonyme au ressource qu'elle expose}.
+            La représentation de l'intéraction avec les sous composants (des WebComponent par exemple)
+            est rendue possible par l'utilisation d'interfaces. De plus, pour éviter des diagrammes
+            trop verbeux, on proposera la \textbf{convention} suivante pour les diagrammes de composants
+            orientés service : \textbf{Une interface est homonyme au ressource qu'elle expose}.
 
         \newpage
         \begin{figure}[h]
@@ -85,10 +86,43 @@
             les architectures orientées services, est aux formalismes de type Swagger ce que les diagrammes
             de classes sont aux commentaires de type Javadoc : une représentation visuelle alternative.
 
-
         \paragraph{}
             Il est intéressant de constater qu'il devient aisé d'avoir une vue globale de l'état
             d'utilisation des services (et donc des ressources) par les différentes parties de ou des
             logiciels. Un bénéfice immédiat de cette modélisation est donc de pouvoir anticiper l'impact
             qu'aurait la modification du fonctionnement d'un service, ou de la modification des modèles
-            qui lui sont associés.
+            qui lui sont associés. Quelques exemples de diagrammes produits pour buckless sont en
+            annexe (cf \ref{component}).
+
+    \subsubsection{Représentation des modèles}
+        La représentation au niveau composant de l'architecture logicelle a été jugée suffisamment
+        détaillée pour ne pas descendre d'échelle et proposer des diagrammes de classes.\\
+        En revanche, la question de pose de la représentation des différents modèles annotés en tant
+        qu'interfaces sur le diagramme de composant. Pour cela, deux représentations possible :
+        le diagramme entité / association (en notation UML ou notation de Chen), ou le diagramme de
+        classes. Le premier offre une description d'un point de vue théorique, là ou le second se
+        soucie des détails d'implémentations (description des tables de jointures, par exemple).
+        Dans la mesure ou l'implémentation de la base de donnée n'a pas été prévue pour changer de
+        technologie, il a été choisi de décrire cette dernière à l'aide de diagrammes de classes,
+        complémentaires aux diagrammes de composants.
+
+    \subsubsection{Description de l'API}
+        Parallèlement au diagrammes de composants qui offrent une vue globale et visuelle des services
+        (mais pas forcément exhaustive), nous avons du choisir un formalisme de type Swagger pour
+        générer une documention dynamique de l'API.\\
+        Le problème que nous avons eu avec Swagger est son principe déterministe\cite{determinism}.
+        Il n'est pas possible de définir plusieurs blocs de réponses possible pour un même code http.
+        Ainsi, nous avons du nous tourner vers une alternative : APIAry et la synthaxe Blueprint.
+        La documentation ainsi produite est disponible en annexe (cf \ref{apiary}).
+
+    \subsubsection{Commentaires et documentation}
+        Nous avons vu au travers l'exemple de Nylas N1 qu'il était possible d'intégrer des larges
+        portions de texte de documentation, dans l'optique de réunir code et documentation dans les
+        même fichiers. Pour buckless, nous avons jugé cette pratique de vouloir réunir documentation
+        et code un peu excessive, car parfois peu lisible au niveau du code source.
+        C'est pourquoi nous nous sommes limités à des commentaires de types jsDoc simples.
+
+    \subsubsection{Automatisation}
+        Au niveau de l'automatisation de la production de la documentation, le duo linter et
+        déploiement continu a été retenu. Pour des raisons de workflow incompatible (évoqué en
+        \ref{hooks}), l'utilisation des hooks n'a pas été retenue.
