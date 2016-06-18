@@ -34,7 +34,12 @@
 
 
 \newpage
-\subsection{Documentation du code}
+\subsection{Stratégie de documentation}
+    \subsubsection
+        A la vue des différents projets étudiés, de leurs approche de la documentationo, et des
+        spécificités du projet Buckless, il a été possible de définir une stratégie de documentation.
+
+
     \subsubsection{UML - Diagrammes de composants}
         \paragraph{}
             Parmi la spécification d'UML, un type de diagramme sous-utilisé, le diagramme de composants,
@@ -73,7 +78,6 @@
             trop verbeux, on proposera la \textbf{convention} suivante pour les diagrammes de composants
             orientés service : \textbf{Une interface est homonyme au ressource qu'elle expose}.
 
-        \newpage
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.6]{./assets/UML/component2.png}
@@ -91,8 +95,7 @@
             d'utilisation des services (et donc des ressources) par les différentes parties de ou des
             logiciels. Un bénéfice immédiat de cette modélisation est donc de pouvoir anticiper l'impact
             qu'aurait la modification du fonctionnement d'un service, ou de la modification des modèles
-            qui lui sont associés. Quelques exemples de diagrammes produits pour buckless sont en
-            annexe (cf \ref{component}).
+            qui lui sont associés.
 
     \subsubsection{Représentation des modèles}
         La représentation au niveau composant de l'architecture logicelle a été jugée suffisamment
@@ -112,8 +115,7 @@
         générer une documention dynamique de l'API.\\
         Le problème que nous avons eu avec Swagger est son principe déterministe\cite{determinism}.
         Il n'est pas possible de définir plusieurs blocs de réponses possible pour un même code http.
-        Ainsi, nous avons du nous tourner vers une alternative : APIAry et la synthaxe Blueprint.
-        La documentation ainsi produite est disponible en annexe (cf \ref{apiary}).
+        Ainsi, nous avons du nous tourner vers une alternative : APIAry et la synthaxe Blueprint..
 
     \subsubsection{Commentaires et documentation}
         Nous avons vu au travers l'exemple de Nylas N1 qu'il était possible d'intégrer des larges
@@ -126,3 +128,37 @@
         Au niveau de l'automatisation de la production de la documentation, le duo linter et
         déploiement continu a été retenu. Pour des raisons de workflow incompatible (évoqué en
         \ref{hooks}), l'utilisation des hooks n'a pas été retenue.
+
+\newpage
+\subsection{Application pratique}
+    Dans cette partie, nous essaierons de nous appuyer sur des éléments de documentations pratiques
+    qui ont été produits pour le projet, afin de présenter certains mécanismes et choix techniques.
+    Buckless étant un projet complexe, seul  les points les plus intéressants, ou les mieux représentés
+    seront présentés ici.
+
+    \subsubsection{Architecture globale}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[height=12cm]{./assets/UML/system.png}
+        \end{figure}
+
+    \newpage
+    \subsubsection{Architecture serveur}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[height=12cm]{./assets/UML/buckless_server.png}
+        \end{figure}
+
+    \newpage
+    \subsubsection{Architecture du client d'administration}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[height=12cm]{./assets/UML/admin_client.png}
+        \end{figure}
+
+    \newpage
+    \subsubsection{Documentation dynamique de l'API}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[height=12cm]{./assets/apiary.png}
+        \end{figure}
