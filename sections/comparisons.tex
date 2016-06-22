@@ -77,8 +77,7 @@ class TextBuffer
         "prototypeProperties": [11, 11],
         "doc": " Public: A mutable text container with undo/redo support\n\n "
 [...]
-            \end{minted}
-            \caption{Une partie de l'AST produit sous forme de JSON}
+            \end{minted} \caption{Une partie de l'AST produit sous forme de JSON}
         \end{listing}
 
         \paragraph{}
@@ -90,15 +89,42 @@ class TextBuffer
 
 \subsection{Ghost}
     \subsubsection{Présentation}
+        L'idée de Ghost est née lorsque Jon O'Nolan, fondateur de Wordpress, se rendit compte que
+        Wordpress était devenu beaucoup trop complexe pour une simple plateforme de blogging. C'est
+        à partir de ce constat qu'il décida de créer une plateforme de blogging dédiée uniquement au
+        contenu. Débutant de projet de zéro, Ghost a été construit sur du javascript côté client et
+        serveur.\\
+        Ajourd'hui, Ghost est une plateforme massivement utilisée. C'est d'ailleurs un projet open-source,
+        qui base son modèle économique sur du Software As A Service (SAAS). C'est donc autant pour les
+        similitudes technologiques que celles du business model que Ghost a été retenu en tant qu'exemple.
 
     \subsubsection{Stratégie de documentation}
+        \paragraph{}
+            Contrairement à Nylas N1, Ghost a pris le partie de ne pas intégrer la documentation à sons processus
+            de développement. La documentation est quelque chose de complètement indépendant du code,
+            et possède son propre versionning. Ghost propose deux grands types de documentation : une documentation
+            orientée utilisateur, et une orientée développeur. C'est sur cette dernière que va se concentrer
+            notre analyse.
+
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.35]{./assets/ghost1.png}
             \caption{Acceuil de la documenation}
         \end{figure}
 
+        Le premier, est la documentation du serveur RESTful de Ghost. Celui-ci utilise un formalisme
+        de description qui est probablement API Blueprint. Il n'est pas possible d'en avoir la certitude,
+        puisque la génération de la documentation dynamique passe par une solution payante\footnote{readme.io},
+        spécialisée dans la mise en page de documentation d'API.\\
+
         \newpage
+        \paragraph{}
+            Parmi la documentation développeur, deux grands axes sont développés.
+            Le premier, est une documentation de l'API RESTful de Ghost. Un formalisme de description
+            d'API tel que Swagger (probablement API Blueprint) est utilisé pour générer une documentation
+            dynamique. Il n'est malheureusement pas possible d'en avoir la certitude, puisque la solution
+            \footnote{readme.io} utilisée est payante.
+
         \begin{figure}[h]
             \centering
             \includegraphics[height=12cm]{./assets/ghost2.png}
@@ -106,6 +132,11 @@ class TextBuffer
         \end{figure}
 
         \newpage
+        \paragraph{}
+            Le deuxième est une documentation de la structure interne du serveur. Celle-ci aborde moins
+            le côté "fonctionnel" du serveur, à savoir les différentes routes et ce qu'elles retournent, mais
+            plus une approche structurelle qui permet de former les potentiels contributeurs. C
+
         \begin{figure}[h]
             \centering
             \includegraphics[height=12cm]{./assets/ghost3.png}
