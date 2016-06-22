@@ -112,12 +112,12 @@ class TextBuffer
             \caption{Acceuil de la documenation}
         \end{figure}
 
-        Le premier, est la documentation du serveur RESTful de Ghost. Celui-ci utilise un formalisme
-        de description qui est probablement API Blueprint. Il n'est pas possible d'en avoir la certitude,
-        puisque la génération de la documentation dynamique passe par une solution payante\footnote{readme.io},
-        spécialisée dans la mise en page de documentation d'API.\\
-
         \newpage
+        \begin{figure}[h]
+            \centering
+            \includegraphics[height=12cm]{./assets/ghost2.png}
+            \caption{API Reference}
+        \end{figure}
         \paragraph{}
             Parmi la documentation développeur, deux grands axes sont développés.
             Le premier, est une documentation de l'API RESTful de Ghost. Un formalisme de description
@@ -125,20 +125,35 @@ class TextBuffer
             dynamique. Il n'est malheureusement pas possible d'en avoir la certitude, puisque la solution
             \footnote{readme.io} utilisée est payante.
 
-        \begin{figure}[h]
-            \centering
-            \includegraphics[height=12cm]{./assets/ghost2.png}
-            \caption{API Reference}
-        \end{figure}
+
 
         \newpage
         \paragraph{}
             Le deuxième est une documentation de la structure interne du serveur. Celle-ci aborde moins
             le côté "fonctionnel" du serveur, à savoir les différentes routes et ce qu'elles retournent, mais
-            plus une approche structurelle qui permet de former les potentiels contributeurs. C
+            plus une approche structurelle qui permet de former les potentiels contributeurs. Elle
+            décrit notemment le style de code à utiliser lors d'une contribution, l'architecture globale
+            de l'application et ses composants, mais aussi des indications quant au déploiement de Ghost.
+            Cette documentation se présente sous la forme d'un Wiki, hébergé directement sur le
+            dépôt du projet sur GitHub. Différents types de documents sont proposés : du texte, des
+            diagrammes et des schémas ASCII. On peut remarquer qu'ucun formalisme n'est utilisé
+            pour les différents diagrammes.
 
         \begin{figure}[h]
             \centering
             \includegraphics[height=12cm]{./assets/ghost3.png}
             \caption{Acceuil du wiki}
         \end{figure}
+
+        Il est intéressant de constater les différences de stratégie de documentation des deux projets.
+        D'un côté, Nylas N1 pousse la principe de la fusion des processus au maximum, en intégrant des
+        paragraphes entiers de documentation au sein des commentaires de la source pour générer sa documentation.
+        De l'autre, Ghost fait preuve d'une politique plus traditionnelle, en gardant une complètement séparé
+        l'action de développer et celle de documenter. Il est possible de voir ici des raisons économiques,
+        puisque Ghost est un projet actuellement beaucoup plus gros. Ainsi, les ressources humaines sont
+        également plus importantes et permettent d'avoir un pouvoir de développement et la capacité de
+        pouvoir documenter en même temps sans avoir à se poser de question. Mais cela peut aussi être
+        le résultat d'un choix, où l'automatisation de la documentation demande une grande part de
+        configuration et l'utilisation d'une multitude d'outils, ce qui compléxifie le développement.\\
+        C'est sur base de ces observations que nous allons maintenant essayer de définir une stratégie
+        de documentation pour le projet Buckless.

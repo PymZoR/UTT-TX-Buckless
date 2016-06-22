@@ -34,8 +34,23 @@
 
 
 \subsection{Stratégie de documentation}
-    A la vue des différents projets étudiés, de leurs approche de la documentationo, et des
-    spécificités du projet Buckless, il a été possible de définir une stratégie de documentation.
+    \paragraph{}
+        A la vue des différents projets étudiés, de leurs approche de la documentation, et des
+        spécificités du projet Buckless, il a été possible de définir une stratégie de documentation.
+        L'équipe de développement étant très réstreinte, il a été trouvé plus judicieux d'avoir une approche
+        la plus automatisée possible de la documentation, afin de pouvoir se forcer à écrire cette dernière
+        en même temps que le code. Cette automatisation passe par les mécanismes et les outils décrits
+        dans l'état de l'art : commentaires normalisés, javadoc, formalisme de description d'API, et
+        déploiement continu.
+
+    \paragraph{}
+        La stratégie proposée est relativement opposée à celle de Ghost, et donc proche de celle
+        de Nylas, avec la majeure différence de ne pas inclure des large portions de textes dans les commentaires
+        en vue de générer des pages. Ces larges portions de textes seront rédigées séparément, sur une plateforme
+        de type wiki. De même, la documentation du code et du système par les diagrammes ne pouvant être
+        générée (avec un résultat convenable) à partir du code, ceux-ci devront être tenus à jour à la main.
+        Afin d'éviter d'avoir un travail important de mise à jour des diagrammes, seule des éléments
+        jugés stables (architecture globale, modèles) sont représentés par ces derniers.
 
 
     \subsubsection{UML - Diagrammes de composants}
@@ -113,7 +128,7 @@
         générer une documention dynamique de l'API.\\
         Le problème que nous avons eu avec Swagger est son principe déterministe\cite{determinism}.
         Il n'est pas possible de définir plusieurs blocs de réponses possible pour un même code http.
-        Ainsi, nous avons du nous tourner vers une alternative : APIAry et la synthaxe Blueprint..
+        Ainsi, nous avons du nous tourner vers une alternative : APIAry et la syntaxe Blueprint..
 
     \subsubsection{Commentaires et documentation}
         Nous avons vu au travers l'exemple de Nylas N1 qu'il était possible d'intégrer des larges
@@ -127,7 +142,6 @@
         déploiement continu a été retenu. Pour des raisons de workflow incompatible (évoqué en
         \ref{hooks}), l'utilisation des hooks n'a pas été retenue.
 
-\newpage
 \subsection{Application pratique}
     Dans cette partie, nous essaierons de nous appuyer sur des éléments de documentations pratiques
     qui ont été produits pour le projet, afin de présenter certains mécanismes et choix techniques.
@@ -140,12 +154,43 @@
             \includegraphics[height=12cm]{./assets/UML/system.png}
         \end{figure}
 
-    \newpage
+        \paragraph{}
+            Buckless est composé d'une base de données (\textbf{database}) et de quatre grandes briques
+            logicielles : une API centrale (\textbf{Buckless Server}), un client de de vente
+            (\textbf{Seller client}), un client d'administration (\textbf{Admin client}), et une
+            application utilisateur mobile (\textbf{Manager client}).
+
+        \paragraph{}
+            Tous les clients de l'API partagent une structure abstraite commune (\textbf{Trusted client}),
+            qui consiste en un client disposant des différentes interfaces de l'API sous réserve
+            d'une authentification SSL.
+
+        \paragraph{}
+            Le système global est dépendant de deux services tiers, l'API de la banque avec laquelle
+            les transactions sont faites, et un pentiel annuaire du système d'information hôte
+            (le caractère optionnel d'une interface ne peut pas être représenté avec le formalisme du
+            diagramme de composant).
+
+
     \subsubsection{Architecture serveur}
         \begin{figure}[h]
             \centering
             \includegraphics[height=12cm]{./assets/UML/buckless_server.png}
         \end{figure}
+
+        \paragraph{}
+            Le serveur a comme unique dépendance la base de donnée. Ol est composé d'une API REST
+            et d'un composant permettant l'envoi de données depuis le serveur en temps réel.
+            L'API REST est développée avec le framework express (\textbf{Express App}). À côté,
+            l'envoi des données depuis le serveur vers le client  est fait avec une libraire de Server Send Event (\textbf{SSE}).
+            Les deux sont intimement liés, puisque pour récupérer des données, le SSE passe par les différentes méthodes
+            exposées par l'application express.
+
+        \paragraph{}
+            Les mécanismes de connexion et d'authentification SSL sont faite au travers de \textit{middlewares}
+            \footnote{Routines logicielles exécutées entre la connexion et l'applicatif} qui sont encore
+            une fois décrits dans une logique commune au deux composants. Ces mises en commun sont représentées
+            par des délégation d'interface au sein du composant global \textbf{Buckless Server}.
 
     \newpage
     \subsubsection{Architecture du client d'administration}
@@ -154,9 +199,21 @@
             \includegraphics[height=12cm]{./assets/UML/admin_client.png}
         \end{figure}
 
+        Ce diagramme manque cruellement de détail, car cette partie est encore en développement.
+        Seule l'idée de base est représentée ici. Chaque sous composant interne représente un WebComponent
+        (alliance d'un document html, de son style CSS et de sa logique javascript). L'intérêt ici est
+        d'associer chaque WebComponent avec les ressources dont il dépend au niveau de l'API.
+        Les dépendances envers l'API REST ainsi que vers les Server Send Events sont représentées par
+        des interfaces requises. Au niveau de la \textbf{Data API}, un port est utilisé pour découpler
+        l'interface requises en des interfaces fournies. Celles ci respectent la convention de nommage
+        des interfaces, qui reflètent les ressources quelles délivrent.
+
     \newpage
     \subsubsection{Documentation dynamique de l'API}
         \begin{figure}[h]
             \centering
             \includegraphics[height=12cm]{./assets/apiary.png}
         \end{figure}
+        La documentation dynamique de l'API a été générée par Apiary, un outil semblable à
+        celui utilisé par Ghost. Il propose de générer des documentations à partir des plus gros
+        formalismes de description d'API (Swagger, API blueprint, RAML).
