@@ -34,7 +34,7 @@ jsDoc pour javascript, doxygen pour C/C++, etc..
 \end{listing}
 
 Au delà de l'intérêt immédiat des commentaires sur la lecture du code, ce formalisme vient avec
-un ensemble d'outil permettant l'extraction des commentaires, puis la génération d'une documentation
+un ensemble d'outils permettant l'extraction des commentaires, puis la génération d'une documentation
 statique de la structure du code.
 
 \begin{figure}[ht]
@@ -72,7 +72,7 @@ produire des diagrammes à partir de code existant.
 
 Cette utilisation est d'autant plus intéressante qu'elle permet aux côtés des documentations
 statiques vues précédemments, de rendre compte de l'état du code à travers différents
-canaux (textes, visuels..). De plus, contrairement au formalismes de documentation par commentaire,
+canaux (textes, visuels..). De plus, contrairement aux formalismes de documentation par commentaire,
 la syntaxe UML des diagrammes de classes permet de visualiser de manière intuitive la nature des
 liens entre les différentes entités.
 
@@ -121,7 +121,7 @@ de description d'API REST les plus populaires.
         Sa structure flexible permet de pouvoir centraliser, trier et distribuer les différentes strates
         de documentations discutées ci-dessus. De plus, il peut servir pour ajouter du contenu décrivant
         le système et ce qui gravite autour, à un niveau de description qui n'avait pas sa place dans les
-        contextes vu précédemment. Un rassemblement des wiki les mieux tenus dans le millieu de l'open source
+        contextes vu précédemment. Un rassemblement des wikis les mieux tenus dans le millieu de l'open source
         est proposé par GitHub\cite{wiki}.
 
         \begin{figure}[ht]
@@ -187,9 +187,10 @@ touch .git/hooks/pre-commit
 chmod +x .git/hooks/pre-commit
             \end{minted}
 
+            \newpage
             Enfin, il ne reste plus qu'à appeler le linter :
 
-            \begin{listing}[ht]
+            \begin{listing}[h]
                 \begin{minted}[bgcolor=black,formatcom=\color{white}]{bash}
 #!/bin/sh
 
@@ -212,13 +213,13 @@ eslint .
         pas de régression dans l'application développée. Il assure la bonne compilation du code,
         mais aussi le jeu des tests unitaires, le packaging, le déploiement et l’exécution des tests
         dans un environnement d’intégration. Intégrer le lint au coeur de ce processus permet
-        de déclarer le code «non saint», et ainsi pousser le développement à se faire en même
+        de déclarer le code "non saint", et ainsi pousser le développement à se faire en même
         temps que celui de sa documentation. Parmis les outils d'intégration continue les plus
         populaires, on pourra citer : Travis CI, Circle CI, Jenkins, Gitlab CI. L'écosystème est cependant
         en pleine évolution, et il existe des dizaines d'alternatives.
 
     \subsubsection{Déploiement continu}
-        On appelle déploiement ocntinu le fait d'automatiser les mécanismes de déploiement du code en
+        On appelle déploiement continu le fait d'automatiser les mécanismes de déploiement du code en
         production à la suite de l'intégration continue. Un cas d'utilisation immédiat pour la documentation
         est alors la mise en ligne automatique des documentations générées par Doxx ou Swagger après
         chaque nouvelle version du code. Cette pratique est d'autant plus facile d'accès maintenant que
